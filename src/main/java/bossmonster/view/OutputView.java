@@ -1,0 +1,7 @@
+package bossmonster.view;
+
+public class OutputView {
+
+    public OutputView() {
+    }
+}
