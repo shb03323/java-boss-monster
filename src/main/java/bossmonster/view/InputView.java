@@ -18,7 +18,7 @@ public class InputView {
 
     public int inputBossMonsterHP() {
         try {
-            System.out.println("보스 몬스터의 HP를 입력해주세요.");
+            System.out.println("\n보스 몬스터의 HP를 입력해주세요.");
             return sc.nextInt();
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException("보스 몬스터의 HP는 숫자만 가능합니다.");
@@ -26,13 +26,13 @@ public class InputView {
     }
 
     public String inputPlayerName() {
-        System.out.println("플레이어의 이름을 입력해주세요.");
-        return sc.nextLine();
+        System.out.println("\n플레이어의 이름을 입력해주세요.");
+        return sc.next();
     }
 
     public PlayerStatusInputDto inputPlayerStatus() {
-        System.out.println("플레이어의 HP와 MP를 입력해주세요.(,로 구분)");
-        final List<String> inputs = splitPlayerStatusInput(sc.nextLine());
+        System.out.println("\n플레이어의 HP와 MP를 입력해주세요.(,로 구분)");
+        final List<String> inputs = splitPlayerStatusInput(sc.next());
         return PlayerStatusInputDto.from(mapToNumber(inputs));
     }
 
