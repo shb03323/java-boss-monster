@@ -21,5 +21,4 @@ class HealthPointsTest {
         // then
         assertThat(damagedHealthPoints.getLeftValue()).isEqualTo(initialHealthPoints - damage);
     }
-
 }

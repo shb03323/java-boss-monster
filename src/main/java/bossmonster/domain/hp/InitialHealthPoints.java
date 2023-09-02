@@ -9,7 +9,7 @@ public final class InitialHealthPoints {
     private final int value;
 
     public InitialHealthPoints(final int value) {
-        validateNotLessThanMinimumValue();
+        validateNotLessThanMinimumValue(value);
         this.value = value;
     }
 

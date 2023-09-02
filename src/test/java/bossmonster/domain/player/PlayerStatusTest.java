@@ -59,4 +59,19 @@ class PlayerStatusTest {
         assertThatThrownBy(() -> playerStatus.changeMana(changesMP))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("플레이어의 HP가 공격 받는다.")
+    @Test
+    void damageHealthPoints() {
+        // given
+        final int initialHP = 30;
+        final int damagePoints = 10;
+        final PlayerStatus playerStatus = PlayerStatus.of(initialHP, 170);
+
+        // when
+        final PlayerStatus damagedPlayerStatus = playerStatus.damageHealthPoints(damagePoints);
+
+        // then
+        assertThat(damagedPlayerStatus.getHealthPoints().getLeftValue()).isEqualTo(initialHP - damagePoints);
+    }
 }

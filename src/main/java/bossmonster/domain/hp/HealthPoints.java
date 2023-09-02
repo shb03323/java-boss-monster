@@ -21,6 +21,10 @@ public final class HealthPoints {
         return new HealthPoints(startValue, afterDamagedHealthPoints);
     }
 
+    public boolean isHealthPointsLeftsLessThanMinimumValue() {
+        return leftValue.isLessThanMinimumValue();
+    }
+
     public int getStartValue() {
         return startValue.getValue();
     }
