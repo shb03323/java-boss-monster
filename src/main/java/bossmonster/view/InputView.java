@@ -18,4 +18,9 @@ public class InputView {
             throw new IllegalArgumentException("보스 몬스터의 HP는 숫자만 가능합니다.");
         }
     }
+
+    public String inputPlayerName() {
+        System.out.println("플레이어의 이름을 입력해주세요.");
+        return sc.nextLine();
+    }
 }
