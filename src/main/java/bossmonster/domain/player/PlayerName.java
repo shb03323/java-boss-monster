@@ -1,4 +1,4 @@
-package bossmonster.domain;
+package bossmonster.domain.player;
 
 import bossmonster.exception.CustomException;
 
