@@ -1,5 +1,7 @@
 package bossmonster.domain.mp;
 
+import java.util.Objects;
+
 public final class ManaPoints {
 
     private final InitialManaPoints startValue;
@@ -25,5 +27,17 @@ public final class ManaPoints {
 
     public int getLeftValue() {
         return leftValue.getValue();
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ManaPoints that)) return false;
+        return Objects.equals(startValue, that.startValue) && Objects.equals(leftValue, that.leftValue);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startValue, leftValue);
     }
 }

@@ -20,7 +20,7 @@ class ManaPointsTest {
         final ManaPoints changedManaPoints = initialManaPoints.changeMana(manaChanges);
 
         // then
-        assertThat(changedManaPoints.getLeftValue()).isEqualTo(initialMana - manaChanges);
+        assertThat(changedManaPoints.getLeftValue()).isEqualTo(initialMana + manaChanges);
     }
 
     @DisplayName("changeMana 메소드로 MP를 바꾸는 경우에 초기 MP는 변하지 않는다.")

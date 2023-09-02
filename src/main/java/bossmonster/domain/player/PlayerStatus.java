@@ -4,6 +4,8 @@ import bossmonster.domain.hp.HealthPoints;
 import bossmonster.domain.mp.ManaPoints;
 import bossmonster.exception.CustomException;
 
+import java.util.Objects;
+
 public final class PlayerStatus {
 
     private static final int INITIAL_SUM_OF_HP_AND_MP = 200;
@@ -38,5 +40,17 @@ public final class PlayerStatus {
 
     public ManaPoints getManaPoints() {
         return manaPoints;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlayerStatus that)) return false;
+        return Objects.equals(healthPoints, that.healthPoints) && Objects.equals(manaPoints, that.manaPoints);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(healthPoints, manaPoints);
     }
 }
