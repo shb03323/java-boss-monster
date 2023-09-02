@@ -1,4 +1,4 @@
-package bossmonster.domain;
+package bossmonster.domain.boss;
 
 import bossmonster.domain.boss.Boss;
 import org.junit.jupiter.api.DisplayName;
