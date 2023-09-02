@@ -34,6 +34,10 @@ public final class Boss {
         return new Boss(damagedHealthPoints);
     }
 
+    public boolean isDead() {
+        return healthPoints.isHealthPointsLeftsLessThanMinimumValue();
+    }
+
     public HealthPoints getHealthPoints() {
         return healthPoints;
     }

@@ -1,5 +1,6 @@
 package bossmonster.view;
 
+import bossmonster.view.dto.PlayerAttackCommand;
 import bossmonster.view.dto.PlayerStatusInputDto;
 
 import java.util.Arrays;
@@ -65,5 +66,13 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("HP와 MP는 숫자이어야 합니다.");
         }
+    }
+
+    public PlayerAttackCommand inputPlayerAttack() {
+        System.out.println("\n어떤 공격을 하시겠습니까?\n" +
+                "1. 물리 공격\n" +
+                "2. 마법 공격");
+        final String input = sc.next();
+        return PlayerAttackCommand.from(input);
     }
 }

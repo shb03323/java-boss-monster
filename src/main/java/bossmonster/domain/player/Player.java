@@ -15,6 +15,14 @@ public final class Player {
         return new Player(playerName, changedPlayerStatus);
     }
 
+    public Player damaged(final int damagePoint) {
+        return new Player(playerName, playerStatus.damageHealthPoints(damagePoint));
+    }
+
+    public boolean isDead() {
+        return playerStatus.isHealthPointsLeftsLessThanMinimumValue();
+    }
+
     public String getPlayerName() {
         return playerName.getName();
     }

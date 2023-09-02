@@ -34,9 +34,13 @@ public final class PlayerStatus {
         return new PlayerStatus(healthPoints, changedManaPoints);
     }
 
-    public PlayerStatus damageHealthPoints(final int value) {
-        final HealthPoints damagedHealthPoints = healthPoints.damaged(value);
+    public PlayerStatus damageHealthPoints(final int damagePoint) {
+        final HealthPoints damagedHealthPoints = healthPoints.damaged(damagePoint);
         return new PlayerStatus(damagedHealthPoints, manaPoints);
+    }
+
+    public boolean isHealthPointsLeftsLessThanMinimumValue() {
+        return healthPoints.isHealthPointsLeftsLessThanMinimumValue();
     }
 
     public HealthPoints getHealthPoints() {

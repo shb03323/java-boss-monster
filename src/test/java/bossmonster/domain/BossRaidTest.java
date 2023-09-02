@@ -1,6 +1,7 @@
 package bossmonster.domain;
 
 import bossmonster.domain.attack.PlayerAttack;
+import bossmonster.domain.attack.RandomDamageGenerator;
 import bossmonster.domain.boss.Boss;
 import bossmonster.domain.player.Player;
 import bossmonster.domain.player.PlayerName;
@@ -22,7 +23,7 @@ class BossRaidTest {
         final Player player = new Player(new PlayerName("ditoo"), PlayerStatus.of(100, playerInitialMP));
         final int bossInitialHP = 100;
         final Boss boss = Boss.from(bossInitialHP);
-        final BossRaid bossRaid = new BossRaid(player, boss);
+        final BossRaid bossRaid = new BossRaid(boss, player, new RandomDamageGenerator());
 
         // when
         final BossRaid afterBossAttack = bossRaid.takePlayerTurn(PlayerAttack.MAGIC_ATTACK);
@@ -44,7 +45,7 @@ class BossRaidTest {
         final Player player = new Player(new PlayerName("ditoo"), PlayerStatus.of(190, playerInitialMP));
         final int bossInitialHP = 100;
         final Boss boss = Boss.from(bossInitialHP);
-        final BossRaid bossRaid = new BossRaid(player, boss);
+        final BossRaid bossRaid = new BossRaid(boss, player, new RandomDamageGenerator());
 
         // when, then
         assertThatThrownBy(() -> bossRaid.takePlayerTurn(PlayerAttack.MAGIC_ATTACK))
@@ -59,7 +60,7 @@ class BossRaidTest {
         final Player player = new Player(new PlayerName("ditoo"), PlayerStatus.of(100, playerInitialMP));
         final int bossInitialHP = 100;
         final Boss boss = Boss.from(bossInitialHP);
-        final BossRaid bossRaid = new BossRaid(player, boss);
+        final BossRaid bossRaid = new BossRaid(boss, player, new RandomDamageGenerator());
 
         // when
         final BossRaid afterBossAttack = bossRaid.takePlayerTurn(PlayerAttack.PHYSICAL_ATTACK);
