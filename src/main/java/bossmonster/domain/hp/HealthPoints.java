@@ -16,7 +16,10 @@ public final class HealthPoints {
         return new HealthPoints(new InitialHealthPoints(value), new HealthPointsLefts(value));
     }
 
-
+    public HealthPoints damaged(final int damagedValue) {
+        final HealthPointsLefts afterDamagedHealthPoints = leftValue.damaged(damagedValue);
+        return new HealthPoints(startValue, afterDamagedHealthPoints);
+    }
 
     public int getStartValue() {
         return startValue.getValue();
