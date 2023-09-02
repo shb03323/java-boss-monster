@@ -1,10 +1,11 @@
 package bossmonster.controller;
 
+import bossmonster.controller.dto.BossInfoDto;
 import bossmonster.controller.dto.PlayerInfoDto;
-import bossmonster.domain.Boss;
-import bossmonster.domain.Player;
-import bossmonster.domain.PlayerName;
-import bossmonster.domain.PlayerStatus;
+import bossmonster.domain.boss.Boss;
+import bossmonster.domain.player.Player;
+import bossmonster.domain.player.PlayerName;
+import bossmonster.domain.player.PlayerStatus;
 import bossmonster.view.InputView;
 import bossmonster.view.OutputView;
 import bossmonster.view.dto.PlayerStatusInputDto;
@@ -43,7 +44,6 @@ public class BossGameController {
     private PlayerName initPlayerName() {
         try {
             final String playerName = inputView.inputPlayerName();
-            System.out.println(playerName);
             return new PlayerName(playerName);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -62,13 +62,20 @@ public class BossGameController {
     }
 
     private void startBossRaid(final Boss boss, final Player player) {
-        printBossRaidStartMessage(player);
+        printBossRaidStartMessage(boss, player);
 
     }
 
-    private void printBossRaidStartMessage(final Player player) {
+    private void printBossRaidStartMessage(final Boss boss, final Player player) {
         outputView.printRaidStartMessage();
-        outputView.printInitialGameStatus(playerToPlayerInfoDto(player));
+        outputView.printInitialGameStatus(bossToBossInfoDto(boss), playerToPlayerInfoDto(player));
+    }
+
+    private BossInfoDto bossToBossInfoDto(final Boss boss) {
+        return new BossInfoDto(
+                boss.getHealthPoints().getStartValue(),
+                boss.getHealthPoints().getLeftValue()
+        );
     }
 
     private PlayerInfoDto playerToPlayerInfoDto(final Player player) {

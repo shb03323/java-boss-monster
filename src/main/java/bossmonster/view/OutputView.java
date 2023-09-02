@@ -1,5 +1,6 @@
 package bossmonster.view;
 
+import bossmonster.controller.dto.BossInfoDto;
 import bossmonster.controller.dto.PlayerInfoDto;
 
 public class OutputView {
@@ -11,10 +12,10 @@ public class OutputView {
         System.out.println("\n보스 레이드를 시작합니다!");
     }
 
-    public void printInitialGameStatus(final PlayerInfoDto playerInfo) {
-        System.out.println("\n============================\n" +
-                "BOSS HP [100/100]\n" +
-                "____________________________\n" +
+    public void printInitialGameStatus(final BossInfoDto bossInfo, final PlayerInfoDto playerInfo) {
+        System.out.println("\n============================");
+        System.out.printf("BOSS HP [%d/%d]\n", bossInfo.getBossHPLefts(), bossInfo.getBossHPStarts());
+        System.out.println("____________________________\n" +
                 "   ^-^\n" +
                 " / 0 0 \\\n" +
                 "(   \"   )\n" +
