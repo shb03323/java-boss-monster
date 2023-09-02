@@ -1,5 +1,7 @@
-package bossmonster.domain;
+package bossmonster.domain.player;
 
+import bossmonster.domain.hp.HealthPoints;
+import bossmonster.domain.mp.ManaPoints;
 import bossmonster.exception.CustomException;
 
 public final class PlayerStatus {
@@ -23,6 +25,11 @@ public final class PlayerStatus {
         if (inputHP + inputMP != INITIAL_SUM_OF_HP_AND_MP) {
             throw new CustomException("플레이어의 HP와 MP의 합은 200이어야 합니다.");
         }
+    }
+
+    public PlayerStatus changeMana(final int value) {
+        final ManaPoints changedManaPoints = manaPoints.changeMana(value);
+        return new PlayerStatus(healthPoints, changedManaPoints);
     }
 
     public HealthPoints getHealthPoints() {
