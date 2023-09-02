@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public final class HealthPointsLefts {
 
+    private static final int MINIMUM_VALUE = 1;
+
     private final int value;
 
     public HealthPointsLefts(final int value) {
@@ -12,6 +14,10 @@ public final class HealthPointsLefts {
 
     public HealthPointsLefts damaged(final int value) {
         return new HealthPointsLefts(this.value - value);
+    }
+
+    public boolean isLessThanMinimumValue() {
+        return value < MINIMUM_VALUE;
     }
 
     public int getValue() {
