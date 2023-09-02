@@ -1,5 +1,7 @@
 package bossmonster.view;
 
+import bossmonster.view.dto.PlayerStatusInputDto;
+
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -28,10 +30,10 @@ public class InputView {
         return sc.nextLine();
     }
 
-    public List<Integer> inputPlayerStatus() {
+    public PlayerStatusInputDto inputPlayerStatus() {
         System.out.println("플레이어의 HP와 MP를 입력해주세요.(,로 구분)");
         final List<String> inputs = splitPlayerStatusInput(sc.nextLine());
-        return mapToNumber(inputs);
+        return PlayerStatusInputDto.from(mapToNumber(inputs));
     }
 
     private List<String> splitPlayerStatusInput(final String input) {
