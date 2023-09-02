@@ -1,4 +1,4 @@
-package bossmonster.domain;
+package bossmonster.domain.attack;
 
 public interface DamageGenerator {
 
