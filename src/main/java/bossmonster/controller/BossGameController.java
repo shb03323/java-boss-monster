@@ -2,6 +2,8 @@ package bossmonster.controller;
 
 import bossmonster.domain.Boss;
 import bossmonster.domain.Player;
+import bossmonster.domain.PlayerName;
+import bossmonster.domain.PlayerStatus;
 import bossmonster.view.InputView;
 import bossmonster.view.OutputView;
 import bossmonster.view.dto.PlayerStatusInputDto;
@@ -33,13 +35,29 @@ public class BossGameController {
     }
 
     private Player initPlayer() {
+        final PlayerName playerName = initPlayerName();
+        final PlayerStatus playerStatus = initPlayerStatus();
+        return new Player(playerName, playerStatus);
+    }
+
+    private PlayerName initPlayerName() {
         try {
             final String playerName = inputView.inputPlayerName();
-            final PlayerStatusInputDto playerStatusInputDto = inputView.inputPlayerStatus();
-            return Player.of(playerName, playerStatusInputDto.getInputHP(), playerStatusInputDto.getInputMP());
+            System.out.println(playerName);
+            return new PlayerName(playerName);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return initPlayer();
+            return initPlayerName();
+        }
+    }
+
+    private PlayerStatus initPlayerStatus() {
+        try {
+            final PlayerStatusInputDto playerStatusInputDto = inputView.inputPlayerStatus();
+            return PlayerStatus.of(playerStatusInputDto.getInputHP(), playerStatusInputDto.getInputMP());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return initPlayerStatus();
         }
     }
 }
