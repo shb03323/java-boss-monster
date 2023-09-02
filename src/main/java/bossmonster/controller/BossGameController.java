@@ -1,5 +1,6 @@
 package bossmonster.controller;
 
+import bossmonster.controller.dto.PlayerInfoDto;
 import bossmonster.domain.Boss;
 import bossmonster.domain.Player;
 import bossmonster.domain.PlayerName;
@@ -7,8 +8,6 @@ import bossmonster.domain.PlayerStatus;
 import bossmonster.view.InputView;
 import bossmonster.view.OutputView;
 import bossmonster.view.dto.PlayerStatusInputDto;
-
-import java.util.List;
 
 public class BossGameController {
 
@@ -23,6 +22,7 @@ public class BossGameController {
     public void runGame() {
         final Boss boss = initBoss();
         final Player player = initPlayer();
+        startBossRaid(boss, player);
     }
 
     private Boss initBoss() {
@@ -59,5 +59,24 @@ public class BossGameController {
             System.out.println(e.getMessage());
             return initPlayerStatus();
         }
+    }
+
+    private void startBossRaid(final Boss boss, final Player player) {
+        printBossRaidStartMessage(player);
+
+    }
+
+    private void printBossRaidStartMessage(final Player player) {
+        outputView.printRaidStartMessage();
+        outputView.printInitialGameStatus(playerToPlayerInfoDto(player));
+    }
+
+    private PlayerInfoDto playerToPlayerInfoDto(final Player player) {
+        return new PlayerInfoDto(
+                player.getPlayerName(),
+                player.getPlayerStatus().getHealthPoints().getStartValue(),
+                player.getPlayerStatus().getManaPoints().getStartValue(),
+                player.getPlayerStatus().getHealthPoints().getLeftValue(),
+                player.getPlayerStatus().getManaPoints().getLeftValue());
     }
 }

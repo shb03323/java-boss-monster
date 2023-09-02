@@ -1,16 +1,22 @@
 package bossmonster.domain;
 
 public enum PlayerAttack {
-    PHYSICAL_ATTACK(new ManaPoints(10)),
-    MAGIC_ATTACK(new ManaPoints(-30));
+    PHYSICAL_ATTACK(10, 10),
+    MAGIC_ATTACK(-30, 20);
 
-    private final ManaPoints manaChanges;
+    private final int manaChanges;
+    private final int damage;
 
-    PlayerAttack(final ManaPoints manaChanges) {
+    PlayerAttack(final int manaChanges, final int damage) {
         this.manaChanges = manaChanges;
+        this.damage = damage;
     }
 
-    public ManaPoints getManaChanges() {
+    public int getManaChanges() {
         return manaChanges;
+    }
+
+    public int getDamage() {
+        return damage;
     }
 }

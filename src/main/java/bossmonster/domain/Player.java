@@ -9,4 +9,12 @@ public class Player {
         this.playerName = playerName;
         this.playerStatus = playerStatus;
     }
+
+    public String getPlayerName() {
+        return playerName.getName();
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
+    }
 }

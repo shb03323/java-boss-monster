@@ -22,4 +22,8 @@ public final class PlayerName {
             throw new CustomException("플레이어 이름은 5자보다 클 수 없습니다.");
         }
     }
+
+    public String getName() {
+        return name;
+    }
 }

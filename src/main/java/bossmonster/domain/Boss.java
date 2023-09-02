@@ -15,7 +15,7 @@ public class Boss {
 
     public static Boss from(final int inputHP) {
         validateHealthPoints(inputHP);
-        final HealthPoints healthPoints = new HealthPoints(inputHP);
+        final HealthPoints healthPoints = HealthPoints.init(inputHP);
         return new Boss(healthPoints);
     }
 
