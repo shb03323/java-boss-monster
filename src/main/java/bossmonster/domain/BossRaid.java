@@ -39,7 +39,7 @@ public final class BossRaid {
     public BossRaid takeBossTurn() {
         final int damagePoint = bossDamageGenerator.generate();
         final Player damagedPlayer = player.damaged(damagePoint);
-        return new BossRaid(boss, damagedPlayer, bossDamageGenerator);
+        return new BossRaid(boss, damagedPlayer, battleCount, bossDamageGenerator);
     }
 
     public boolean isPlayerDead() {

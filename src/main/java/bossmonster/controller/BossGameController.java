@@ -107,7 +107,7 @@ public class BossGameController {
         while (true) {
             final BossRaid afterPlayerTurn = takePlayerTurn(bossRaid);
             if (afterPlayerTurn.isBossDead()) {
-                outputView.printPlayerVictory(playerToPlayerInfoDto(bossRaid.getPlayer()), bossRaid.getBattleCount());
+                outputView.printPlayerVictory(playerToPlayerInfoDto(afterPlayerTurn.getPlayer()), afterPlayerTurn.getBattleCount());
                 break;
             }
             final BossRaid afterBossTurn = takeBossTurn(afterPlayerTurn);
