@@ -3,7 +3,7 @@ package bossmonster.domain.boss;
 import bossmonster.domain.hp.HealthPoints;
 import bossmonster.exception.CustomException;
 
-public class Boss {
+public final class Boss {
 
     private static final int MINIMUM_BOSS_HP = 100;
     private static final int MAXIMUM_BOSS_HP = 300;
