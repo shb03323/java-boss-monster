@@ -1,5 +1,6 @@
-package bossmonster.domain;
+package bossmonster.domain.boss;
 
+import bossmonster.domain.hp.HealthPoints;
 import bossmonster.exception.CustomException;
 
 public class Boss {
@@ -7,10 +8,10 @@ public class Boss {
     private static final int MINIMUM_BOSS_HP = 100;
     private static final int MAXIMUM_BOSS_HP = 300;
 
-    private final HealthPoints healthPointsLefts;
+    private final HealthPoints healthPoints;
 
-    private Boss(final HealthPoints healthPointsLefts) {
-        this.healthPointsLefts = healthPointsLefts;
+    private Boss(final HealthPoints healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
     public static Boss from(final int inputHP) {
@@ -26,5 +27,14 @@ public class Boss {
         if (input > MAXIMUM_BOSS_HP) {
             throw new CustomException("보스의 체력은 300보다 클 수 없습니다.");
         }
+    }
+
+    public Boss damaged(final int damagePoint) {
+        final HealthPoints damagedHealthPoints = healthPoints.damaged(damagePoint);
+        return new Boss(damagedHealthPoints);
+    }
+
+    public HealthPoints getHealthPoints() {
+        return healthPoints;
     }
 }

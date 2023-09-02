@@ -1,10 +1,10 @@
 package bossmonster.domain;
 
+import bossmonster.domain.boss.Boss;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class BossTest {
 
@@ -39,5 +39,20 @@ class BossTest {
         // when, then
         assertThatThrownBy(() -> Boss.from(inputHP))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보스에게 20인 데미지로 공격하면 보스의 체력이 20 깎인다.")
+    @Test
+    void boss_damaged_when_attack_to_20_damage() {
+        // given
+        final int initialHP = 100;
+        final Boss boss = Boss.from(initialHP);
+        final int damagePoint = 20;
+
+        // when
+        final Boss damagedBoss = boss.damaged(damagePoint);
+
+        // then
+        assertThat(damagedBoss.getHealthPoints().getLeftValue()).isEqualTo(initialHP - damagePoint);
     }
 }
