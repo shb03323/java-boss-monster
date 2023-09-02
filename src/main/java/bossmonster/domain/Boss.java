@@ -13,9 +13,9 @@ public class Boss {
         this.healthPointsLefts = healthPointsLefts;
     }
 
-    public static Boss from(final int inputHealthPoints) {
-        validateHealthPoints(inputHealthPoints);
-        final HealthPoints healthPoints = new HealthPoints(inputHealthPoints);
+    public static Boss from(final int inputHP) {
+        validateHealthPoints(inputHP);
+        final HealthPoints healthPoints = new HealthPoints(inputHP);
         return new Boss(healthPoints);
     }
 
