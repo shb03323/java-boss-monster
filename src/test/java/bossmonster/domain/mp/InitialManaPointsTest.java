@@ -8,9 +8,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InitialManaPointsTest {
 
-    @DisplayName("초기 MP가 0보다 크면 생성에 성공한다.")
+    @DisplayName("초기 MP가 0 이상 이면 생성에 성공한다.")
     @Test
-    void construct_success_when_value_over_0() {
+    void construct_success_when_value_over_or_equals_to_0() {
         // given
         final int value = 10;
 
